@@ -1,4 +1,4 @@
-//                                                                         
+//                                                                             
 // Sample script for Optuma tool programming
 //
 
@@ -17,25 +17,29 @@ begin
     Tool.Name := 'TxD dates';
     Tool.MouseClicks := 0;
     Tool.Hint := '90, 120, 180, 360 TxD dates looking backwards';
-    Tool.ToolType := ttDataList;
+    Tool.ToolType := ttDataList;    
+    //Tool.AddEphemeris();
 end;
 
 // Init is called to initialise the tool
 // This procedure is called once when the tool is added to a chart
 procedure Init(Tool : TTool);
-begin
+begin                                      
+    //Tool.AddEphemeris();
 end;
-                 
+                                                                                  
 // Process is called to calculate and drawn the tool on screen
 // This procedure is called when new data is received or loaded and 
 // when a selection point is moved by the user 
 procedure Process(Tool : TTool; ProcessStart : Integer; ProcessEnd : Integer; DataIn : TDataList);
 var
     i : Integer;                                  
-begin                                                   
+begin                  
+    //Tool.AddEphemeris();
     Events := Tool.AddEvents();         
     Events.Extend := true; 
-    //Events.AddRegion(Now()-88, Now()-92, clYellow); 
+    //Events.AddRegion(Now()-88, Now()-92, clYellow);
+    //Events.AddRegion(IncMonth(Now(),-1.5)-2, IncMonth(Now(),-1.5)+2, clYellow);
     Events.AddRegion(IncMonth(Now(),-3)-2, IncMonth(Now(),-3)+2, clYellow);
     Events.AddRegion(IncMonth(Now(),-4)-2, IncMonth(Now(),-4)+2, clYellow);      
     Events.AddRegion(IncMonth(Now(),-6)-2, IncMonth(Now(),-6)+2, clYellow);
