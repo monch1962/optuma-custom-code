@@ -23,11 +23,11 @@ end;
 procedure Init(Tool : TTool);
 begin
     Line1 := Tool.AddLine();
-    Line1.Color := clFuchsia;
+    //Line1.Color := clFuchsia;
     Line1.Style := Solid; // Types of TLineStyle=(Solid, DotDot, Dash, DashDot, LongDash, LongDashDot, LongDashDotDot)
     Line1.Width := 1;           
     Text1 := Tool.AddText('', Now(), 10); 
-    Text1.FontSize := 14;
+    //Text1.FontSize := 14;
 end;
 
 // Process is called to calculate and drawn the tool on screen

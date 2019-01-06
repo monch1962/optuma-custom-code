@@ -39,7 +39,8 @@ begin
     Events := Tool.AddEvents();         
     Events.Extend := true; 
     //Events.AddRegion(Now()-88, Now()-92, clYellow);
-    //Events.AddRegion(IncMonth(Now(),-1.5)-2, IncMonth(Now(),-1.5)+2, clYellow);
+    //Events.AddRegion(IncMonth(Now(),-1.5)-2, IncMonth(Now(),-1.5)+2, clYellow);  
+    Events.AddRegion(Now(), Now(), clYellow);
     Events.AddRegion(IncMonth(Now(),-3)-2, IncMonth(Now(),-3)+2, clYellow);
     Events.AddRegion(IncMonth(Now(),-4)-2, IncMonth(Now(),-4)+2, clYellow);      
     Events.AddRegion(IncMonth(Now(),-6)-2, IncMonth(Now(),-6)+2, clYellow);
