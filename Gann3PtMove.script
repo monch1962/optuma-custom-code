@@ -1,0 +1,4 @@
+// Use 1.0 * the highest 60-day ATR in the last 2 years as a proxy for Gann's 3-point rule
+// If the market moves more than this amount away from a high/low, use it as a stop-and-reverse entry trigger
+ThreePointMove=1.0*HIGHESTHIGH(ATR(BARS=60), BARS=500);
+ThreePointMove
