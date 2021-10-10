@@ -1,12 +1,11 @@
-//                                                                    
+//                                                                                                                        
 // Sample script for Optuma tool programming
 //
-
 // This section is where variable are defined that need to be used in both the Init and Process procedures
-var
+var  
     Line1 : TLine;     
     Text1 : TText;
-
+       
 // DefineTool is where the settings for the Tool are defined
 // This procedure is called once when the tool is loaded
 // Normally this procedure does not need to be changed
@@ -23,10 +22,11 @@ end;
 procedure Init(Tool : TTool);
 begin
     Line1 := Tool.AddLine();
-    //Line1.Color := clFuchsia;
+    Line1.Color := clFuchsia;
     Line1.Style := Solid; // Types of TLineStyle=(Solid, DotDot, Dash, DashDot, LongDash, LongDashDot, LongDashDotDot)
     Line1.Width := 1;           
     Text1 := Tool.AddText('', Now(), 10); 
+    Text1.FontColor := clFuchsia;
     //Text1.FontSize := 14;
 end;
 
@@ -36,7 +36,7 @@ end;
 procedure Process(Tool : TTool; ProcessStart : Integer; ProcessEnd : Integer; DataIn : TDataList); 
 var
     PriceDelta : Float;
-    TimeDelta : Float; 
+    TimeDelta : Float;  
     PPD : Float;
 begin
     Line1.P1.Date := Tool.MP[0].Date;
@@ -51,5 +51,5 @@ begin
         PPD := PriceDelta / TimeDelta;
     Text1.Price := Tool.MP[2].Price;                                                                                
     Text1.Date := Tool.MP[2].Date;                                            
-    Text1.Text := 'Pts/Day: ' + FormatFloat('0.####', FloatToStr(PPD));
+    Text1.Text := 'Pts/Day: ' + FormatFloat('0.####', FloatToStr(PPD)) + #13#10 + 'Days: ' + IntToStr(TimeDelta) + #13#10 + 'Range: ' + FormatFloat('0.###', FloatToStr(PriceDelta));
 end;
