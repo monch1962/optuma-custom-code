@@ -35,12 +35,16 @@ procedure Process(Tool : TTool; ProcessStart : Integer; ProcessEnd : Integer; Da
 var
     i : Integer;                                  
 begin                  
-    //Tool.AddEphemeris();
+    //Tool.AddEphemeris();   
+    // As Process() runs each time data gets updated, first let's clear out any
+    // existing events that would've been calculated on older data
+    Events := Null      
+    
     Events := Tool.AddEvents();         
     Events.Extend := true; 
     //Events.AddRegion(Now()-88, Now()-92, clYellow);
     //Events.AddRegion(IncMonth(Now(),-1.5)-2, IncMonth(Now(),-1.5)+2, clYellow);  
-    Events.AddRegion(Now(), Now(), clYellow);
+    //Events.AddRegion(Now(), Now(), clYellow);
     Events.AddRegion(IncMonth(Now(),-3)-2, IncMonth(Now(),-3)+2, clYellow);
     Events.AddRegion(IncMonth(Now(),-4)-2, IncMonth(Now(),-4)+2, clYellow);      
     Events.AddRegion(IncMonth(Now(),-6)-2, IncMonth(Now(),-6)+2, clYellow);
